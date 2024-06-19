@@ -18,6 +18,7 @@
     "@testing-library/user-event": "^13.5.0",
     "electron-is-dev": "2.0.0",
     "firebase": "^10.12.2",
+    "formik": "^2.4.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
@@ -25,7 +26,8 @@
     "sass": "^1.77.5",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
