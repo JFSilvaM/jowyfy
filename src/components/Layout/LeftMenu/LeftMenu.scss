@@ -1,0 +1,32 @@
+@import "~/src/scss/index";
+
+.left-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  padding-top: 40px;
+
+  .ui.menu.vertical.secondary.fluid {
+    margin: 0;
+
+    .item {
+      border-left: 4px solid transparent;
+      border-radius: 0 !important;
+      color: $font-grey !important;
+
+      i {
+        color: $font-grey !important;
+      }
+
+      &.active {
+        border-color: $primary-color;
+        color: $font-light !important;
+
+        i {
+          color: $font-light !important;
+        }
+      }
+    }
+  }
+}

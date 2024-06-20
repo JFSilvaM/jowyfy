@@ -1,0 +1,43 @@
+@import "~/src/scss/index";
+
+$footerHeight: 100px;
+$menuWidth: 300px;
+
+.logged-layout {
+  background-color: $background-primary;
+  height: 100vh;
+
+  &__content {
+    display: flex;
+    height: calc(100% - $footerHeight);
+  }
+
+  &__left-menu {
+    background-color: $background-dark;
+    width: $menuWidth;
+  }
+
+  &__children-content {
+    width: calc(100% - $menuWidth);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__top-bar {
+    height: 40px;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &__footer {
+    background-color: $background-primary;
+    border-top: 1px solid $border-primary;
+    box-shadow: 0 0 20px -5px $background-dark;
+    height: $footerHeight;
+    position: relative;
+    z-index: 1;
+  }
+}
