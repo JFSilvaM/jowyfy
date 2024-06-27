@@ -1,0 +1,25 @@
+@import "~/src/scss/index";
+
+.list-albums {
+  &__album {
+    align-items: center;
+    display: flex !important;
+    flex-direction: column;
+    margin-bottom: 30px !important;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.6;
+    }
+
+    > p {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .ui.image {
+      height: 110px;
+      width: 110px;
+    }
+  }
+}

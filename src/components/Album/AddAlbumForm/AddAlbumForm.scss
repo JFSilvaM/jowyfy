@@ -1,0 +1,26 @@
+@import "~/src/scss/index";
+
+.add-album-form {
+  &__content {
+    display: flex;
+    margin-bottom: 20px;
+
+    &-image {
+      background-color: $background-secondary;
+      height: 130px;
+      margin-right: 20px;
+      width: 130px;
+
+      &.error {
+        border: 1px solid $danger;
+      }
+    }
+
+    &-inputs {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: calc(100% - 150px);
+    }
+  }
+}

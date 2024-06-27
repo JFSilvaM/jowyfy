@@ -3,8 +3,10 @@ import ReactDOM from "react-dom/client";
 import "semantic-ui-css/semantic.min.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "./scss/global.scss";
 import "./utils/firebase";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import "./scss/global.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
