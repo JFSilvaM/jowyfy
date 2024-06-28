@@ -1,18 +1,21 @@
+import { map } from "lodash";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Album, Artist as ArtistController } from "../../api";
+import { Album, Artist as ArtistController, Song } from "../../api";
 import { ArtistBanner } from "../../components/Artist";
 import { Slider } from "../../components/Shared";
 import "./Artist.scss";
 
 const artistController = new ArtistController();
 const albumController = new Album();
+const songController = new Song();
 
 export const Artist = () => {
   const { id } = useParams();
 
   const [artist, setArtist] = useState(null);
   const [albums, setAlbums] = useState(null);
+  const [songs, setSongs] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -38,6 +41,30 @@ export const Artist = () => {
     })();
   }, [id]);
 
+  useEffect(() => {
+    if (albums) {
+      (async () => {
+        try {
+          let data = [];
+
+          for await (const item of albums) {
+            const result = await songController.containAllByAlbum(item.id);
+            const dataTemp = map(result, (dataSong) => ({
+              ...dataSong,
+              image: item.image,
+            }));
+
+            data.push(...dataTemp);
+          }
+
+          setSongs(data);
+        } catch (error) {
+          console.error(error);
+        }
+      })();
+    }
+  }, [albums]);
+
   if (!artist) return null;
 
   return (
@@ -52,6 +79,8 @@ export const Artist = () => {
 
       <div className="artist-page__slider">
         <h2>Canciones</h2>
+
+        <Slider data={songs} song />
       </div>
     </div>
   );

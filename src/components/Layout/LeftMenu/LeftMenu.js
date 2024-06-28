@@ -4,6 +4,7 @@ import { Menu } from "semantic-ui-react";
 import { AddAlbumForm } from "../../Album";
 import { NewArtistForm } from "../../Artist";
 import { BasicModal } from "../../Shared";
+import { AddSongForm } from "../../Song";
 import "./LeftMenu.scss";
 
 export const LeftMenu = () => {
@@ -30,7 +31,7 @@ export const LeftMenu = () => {
     }
     if (type === "song") {
       setTitleModal("Nueva canción");
-      setContentModal(<p>Formulario nueva canción</p>);
+      setContentModal(<AddSongForm onClose={closeModal} />);
     }
 
     setShowModal(true);
