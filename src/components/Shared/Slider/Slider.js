@@ -1,4 +1,5 @@
 import { map } from "lodash";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Slick from "react-slick";
 import { Icon, Image } from "semantic-ui-react";
@@ -16,6 +17,17 @@ const settings = {
 export const Slider = (props) => {
   const { data, basePath, song } = props;
 
+  const [size, setSize] = useState(0);
+  const [loadComplete, setLoadComplete] = useState(false);
+
+  const itemRef = useRef();
+
+  useEffect(() => {
+    if (itemRef.current) {
+      setSize(itemRef.current.clientWidth);
+    }
+  }, [loadComplete]);
+
   return (
     <Slick {...settings} className="slider">
       {map(data, (item) => {
@@ -25,9 +37,15 @@ export const Slider = (props) => {
               key={item.id}
               className="slider__item"
               onClick={() => console.log("Reproducir canción")}
+              ref={itemRef}
+              onLoad={() => setLoadComplete(true)}
             >
               <div className="slider__item-block-play">
-                <Image src={item.image} alt={item.name} />
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  style={{ height: size }}
+                />
 
                 <Icon name="play circle outline" />
               </div>
@@ -41,8 +59,10 @@ export const Slider = (props) => {
             to={`/${basePath}/${item.id}`}
             key={item.id}
             className="slider__item"
+            ref={itemRef}
+            onLoad={() => setLoadComplete(true)}
           >
-            <Image src={item.image} alt={item.name} />
+            <Image src={item.image} alt={item.name} style={{ height: size }} />
 
             <h3>{item.name}</h3>
           </Link>
