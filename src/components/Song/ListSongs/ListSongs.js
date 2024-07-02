@@ -1,9 +1,14 @@
 import { map, size } from "lodash";
 import { Icon, Table } from "semantic-ui-react";
+import { usePlayer } from "../../../hooks";
 import "./ListSongs.scss";
 
 export const ListSongs = (props) => {
   const { songs, miniature } = props;
+
+  const { playSong } = usePlayer();
+
+  const onPlay = (item) => playSong(item, miniature);
 
   if (size(songs) === 0)
     return <p className="no-songs">Este álbum aún no tiene canciones</p>;
@@ -20,7 +25,7 @@ export const ListSongs = (props) => {
 
       <Table.Body>
         {map(songs, (song) => (
-          <Table.Row key={song.id}>
+          <Table.Row key={song.id} onClick={() => onPlay(song)}>
             <Table.Cell collapsing>
               <Icon name="play circle outline" />
             </Table.Cell>

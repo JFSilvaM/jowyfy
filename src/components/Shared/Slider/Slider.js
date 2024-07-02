@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Slick from "react-slick";
 import { Icon, Image } from "semantic-ui-react";
+import { usePlayer } from "../../../hooks";
 import "./Slider.scss";
 
 const settings = {
@@ -22,6 +23,8 @@ export const Slider = (props) => {
 
   const itemRef = useRef();
 
+  const { playSong } = usePlayer();
+
   useEffect(() => {
     if (itemRef.current) {
       setSize(itemRef.current.clientWidth);
@@ -36,7 +39,7 @@ export const Slider = (props) => {
             <div
               key={item.id}
               className="slider__item"
-              onClick={() => console.log("Reproducir canción")}
+              onClick={() => playSong(item, item.image)}
               ref={itemRef}
               onLoad={() => setLoadComplete(true)}
             >
