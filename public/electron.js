@@ -11,7 +11,9 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1500,
     height: 1000,
-    title: "Musicfy",
+    resizable: false,
+    title: "Jowyfy",
+    titleBarStyle: "hiddenInset",
   });
 
   mainWindow.loadURL(
